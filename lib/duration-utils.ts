@@ -1,7 +1,7 @@
 import type { ContractInfo } from '@deriv/core';
 
-export type DurationApiUnit = 'm' | 'd';
-export type DurationSelectUnit = 'm' | 'h' | 'd' | 'end-time';
+export type DurationApiUnit = 't' | 's' | 'm' | 'd';
+export type DurationSelectUnit = 't' | 's' | 'm' | 'h' | 'd' | 'end-time';
 
 export interface DurationOption {
   unit: DurationSelectUnit;
