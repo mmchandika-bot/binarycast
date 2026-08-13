@@ -3,7 +3,7 @@ type DerivEnv = 'production' | 'preview';
 function getEnv(): DerivEnv {
   if (typeof globalThis !== 'undefined' && typeof process !== 'undefined') {
     const env = process.env.NEXT_PUBLIC_DERIV_ENV;
-    //if (env === 'preview') return 'preview';
+    if (env === 'preview') return 'preview';
   }
   return 'production';
 }
