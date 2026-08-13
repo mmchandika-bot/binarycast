@@ -83,7 +83,7 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
   const [direction, setDirection] = useState<Direction>('CALL');
   const [allowEquals, setAllowEquals] = useState<boolean>(true);
   const [stake, setStake] = useState<string>('1');
-  const [duration, setDuration] = useState<number>(1);
+  const [duration, setDuration] = useState<number>(3);
   const [durationUnit, setDurationUnitRaw] = useState<DurationSelectUnit>('h');
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
   const [endTime, setEndTime] = useState<string>('');
