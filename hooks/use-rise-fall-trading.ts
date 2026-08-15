@@ -122,7 +122,7 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
   //const [stake, setStake] = useState<string>(String(sValue)); 
   const [stake, setStake] = useState<string>('3.35');
   const [duration, setDuration] = useState<number>(dValue);
-  const [durationUnit, setDurationUnitRaw] = useState<DurationSelectUnit>(duValue);
+  const [durationUnit, setDurationUnitRaw] = useState<DurationSelectUnit>(duValue as DurationSelectUnit);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
   const [endTime, setEndTime] = useState<string>("");
   const [durationOptionsSymbol, setDurationOptionsSymbol] = useState<string | null>(null);
