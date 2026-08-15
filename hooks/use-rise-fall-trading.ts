@@ -104,7 +104,7 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
   const gsValue = Number(query.get("s"));
   const sValue = Number.isFinite(gsValue) && gsValue > 0
       ? query.get("s")
-      : 10;
+      : '10';
   //
 
   const [direction, setDirection] = useState<Direction>(cType);
