@@ -81,30 +81,40 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
   } = useBaseTrading({ ws, isConnected, isExhausted, isAuthenticated, onAuthWSFailed, contractTypes: CONTRACT_TYPES });
 
   //
-  const query = new URLSearchParams(window.location.search);
-
-  const gdValue = Number(query.get("d"));
-  const dValue = Number.isFinite(gdValue) && gdValue > 0
-      ? gdValue
-      : 60;
-
-  const urlDate = query.get("dt")?.trim();
-  //console.log(urlDate+" "+Date);
+  //
+  let dValue=60;
+  let urlDate='';
+  let duValue='m';
+  let cType='CALL';
+  let sValue='10';
   
-  const gduValue = query.get("du");
-  const duValue = gduValue === "m" ||  gduValue === "h" || gduValue === "d" || gduValue === "end-time"
-      ? gduValue
-      : "m";
+  if(typeof window !=='undefined'){
+	  const query = new URLSearchParams(window.location.search);
 
-  const gcType = query.get("t");
-  const cType = gcType === "f"
-      ? "PUT"
-      : "CALL";
+	  const gdValue = Number(query.get("d"));
+	  dValue = Number.isFinite(gdValue) && gdValue > 0
+		  ? gdValue
+		  : dValue;
 
-  const gsValue = Number(query.get("s"));
-  const sValue = Number.isFinite(gsValue) && gsValue > 0
-      ? gsValue
-      : '10';
+	  urlDate = query.get("dt")?.trim();
+	  //console.log(urlDate+" "+Date);
+	  
+	  const gduValue = query.get("du");
+	  duValue = gduValue === "m" ||  gduValue === "h" || gduValue === "d" || gduValue === "end-time"
+		  ? gduValue
+		  : duValue;
+
+	  const gcType = query.get("t");
+	  cType = gcType === "f"
+		  ? "PUT"
+		  : cType;
+
+	  const gsValue = Number(query.get("s"));
+	  sValue = Number.isFinite(gsValue) && gsValue > 0
+		  ? gsValue
+		  : sValue;
+  }
+  //
   //
 
   const [direction, setDirection] = useState<Direction>(cType);
