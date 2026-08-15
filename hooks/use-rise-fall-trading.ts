@@ -96,7 +96,7 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
 		  ? gdValue
 		  : dValue;
 
-	  urlDate = query.get("dt")?.trim();
+	  urlDate = query.get("dt")?.trim() ?? "";
 	  //console.log(urlDate+" "+Date);
 	  
 	  const gduValue = query.get("du");
