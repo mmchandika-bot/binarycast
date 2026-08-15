@@ -111,7 +111,7 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
 
 	  const gsValue = Number(query.get("s"));
 	  sValue = Number.isFinite(gsValue) && gsValue > 0
-		  ? gsValue
+		  ? String(gsValue)
 		  : sValue;
   }
   //
