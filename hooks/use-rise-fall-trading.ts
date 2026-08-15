@@ -80,13 +80,40 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
     clearSellError,
   } = useBaseTrading({ ws, isConnected, isExhausted, isAuthenticated, onAuthWSFailed, contractTypes: CONTRACT_TYPES });
 
-  const [direction, setDirection] = useState<Direction>('CALL');
+  //
+  const query = new URLSearchParams(window.location.search);
+
+  const gdValue = Number(query.get("d"));
+  const dValue = Number.isFinite(gdValue) && gdValue > 0
+      ? gdValue
+      : 60;
+
+  const urlDate = query.get("dt")?.trim();
+  //console.log(urlDate+" "+Date);
+  
+  const gduValue = query.get("du");
+  const duValue = gduValue === "m" ||  gduValue === "h" || gduValue === "d" || gduValue === "end-time"
+      ? gduValue
+      : "m";
+
+  const gcType = query.get("t");
+  const cType = gcType === "f"
+      ? "PUT"
+      : "CALL";
+
+  const gsValue = Number(query.get("s"));
+  const sValue = Number.isFinite(gsValue) && gsValue > 0
+      ? gsValue
+      : 10;
+  //
+
+  const [direction, setDirection] = useState<Direction>(cType);
   const [allowEquals, setAllowEquals] = useState<boolean>(true);
-  const [stake, setStake] = useState<string>('1');
-  const [duration, setDuration] = useState<number>(3);
-  const [durationUnit, setDurationUnitRaw] = useState<DurationSelectUnit>('h');
+  const [stake, setStake] = useState<string>(sValue);
+  const [duration, setDuration] = useState<number>(dValue);
+  const [durationUnit, setDurationUnitRaw] = useState<DurationSelectUnit>(duValue);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
-  const [endTime, setEndTime] = useState<string>('');
+  const [endTime, setEndTime] = useState<string>("");
   const [durationOptionsSymbol, setDurationOptionsSymbol] = useState<string | null>(null);
 
   const durationOptions = useMemo(() => getDurationOptions(contracts), [contracts]);
