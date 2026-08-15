@@ -113,6 +113,7 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
 	  sValue = Number.isFinite(gsValue) && gsValue > 0
 		  ? String(gsValue)
 		  : sValue;
+	  console.log("Stake: "+sValue);
   }
   //
   //
