@@ -103,14 +103,14 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
 
   const gsValue = Number(query.get("s"));
   const sValue = Number.isFinite(gsValue) && gsValue > 0
-      ? query.get("s")
+      ? gsValue
       : '10';
   //
 
   const [direction, setDirection] = useState<Direction>(cType);
   const [allowEquals, setAllowEquals] = useState<boolean>(true);
-  //const [stake, setStake] = useState<string>(sValue); 
-  const [stake, setStake] = useState<string>(sValue ?? '3.35');
+  const [stake, setStake] = useState<string>(sValue); 
+  //const [stake, setStake] = useState<string>(sValue ?? '3.35');
   const [duration, setDuration] = useState<number>(dValue);
   const [durationUnit, setDurationUnitRaw] = useState<DurationSelectUnit>(duValue);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
