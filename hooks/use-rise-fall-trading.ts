@@ -117,7 +117,7 @@ export function useRiseFallTrading({ ws, isConnected, isExhausted, isAuthenticat
   //
   //
 
-  const [direction, setDirection] = useState<Direction>(cType);
+  const [direction, setDirection] = useState<Direction>(cType as Direction);
   const [allowEquals, setAllowEquals] = useState<boolean>(true);
   //const [stake, setStake] = useState<string>(String(sValue)); 
   const [stake, setStake] = useState<string>('3.35');
